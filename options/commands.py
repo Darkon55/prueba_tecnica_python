@@ -29,7 +29,14 @@ def test(ctx, username, password, url):
     endpoint_service = EdnpointService(ctx)
 
     click.echo(endpoint_service.post_login(params).json())
-    pass
+
+@login.command()
+@click.pass_context
+def set_db(ctx):
+    """Create the table "users" and insert dummy values"""
+    endpoint_service = EdnpointService(ctx)
+
+    click.echo(endpoint_service.create_table())
 
 
 all = login
